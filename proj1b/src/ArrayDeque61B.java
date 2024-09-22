@@ -56,7 +56,7 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
 
     @Override
     public T removeFirst() {
-        T x = items[nextFirst];
+        T x = items[Math.floorMod(nextFirst + 1, items.length)];
         items[nextFirst] = null;
         nextFirst = Math.floorMod(nextFirst + 1, items.length);
         size -= 1;

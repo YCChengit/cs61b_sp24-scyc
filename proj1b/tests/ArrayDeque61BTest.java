@@ -116,4 +116,15 @@ public class ArrayDeque61BTest {
         assertThat(ad.toList()).isEqualTo(List.of());
     }
 
+    @Test
+    public void remove_first() {
+        ArrayDeque61B<Integer> ad = new ArrayDeque61B<>();
+        ad.addFirst(1);
+        ad.addFirst(2);
+        ad.addFirst(3);
+        assertThat(ad.removeFirst()).isEqualTo(3);
+        assertThat(ad.size()).isEqualTo(2);
+        assertThat(ad.toList()).isEqualTo(List.of(2, 1));
+    }
+
 }
