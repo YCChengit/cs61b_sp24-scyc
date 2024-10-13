@@ -42,4 +42,15 @@ public class TestMultiWordK0Hyponyms {
 
     // TODO: Add more unit tests (including edge case tests) here.
 
+    @Test
+    public void testHyponymsHandler_large() {
+        NgordnetQueryHandler studentHandler = AutograderBuddy.getHyponymsHandler(
+                WORDS_FILE, TOTAL_COUNTS_FILE, LARGE_SYNSET_FILE, LARGE_HYPONYM_FILE);
+        List<String> words = List.of("occurrence", "change");
+
+        NgordnetQuery nq = new NgordnetQuery(words, 0, 0, 0, NgordnetQueryType.HYPONYMS);
+        String actual = studentHandler.handle(nq);
+        String expected = "[alteration, change, increase, jump, leap, modification, saltation, transition]";
+        assertThat(actual).isEqualTo(expected);
+    }
 }
