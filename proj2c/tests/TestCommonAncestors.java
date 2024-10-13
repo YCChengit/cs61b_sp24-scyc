@@ -34,4 +34,20 @@ public class TestCommonAncestors {
     // TODO: Add more unit tests (including edge case tests) here.
 
     // TODO: Create similar unit test files for the k != 0 cases.
+    /*
+    This test fails because the count always returns 0.0. The words don't exist in the NGramMap.
+     */
+
+
+    @Test
+    public void testSpecAdjustmentK() {
+        NgordnetQueryHandler studentHandler = AutograderBuddy.getHyponymsHandler(
+                WORDS_FILE, TOTAL_COUNTS_FILE, SMALL_SYNSET_FILE, SMALL_HYPONYM_FILE);
+        List<String> words = List.of("adjustment");
+
+        NgordnetQuery nq = new NgordnetQuery(words, 2000, 2020, 3, NgordnetQueryType.ANCESTORS);
+        String actual = studentHandler.handle(nq);
+        String expected = "[adjustment, alteration, event]";
+        assertThat(actual).isEqualTo(expected);
+    }
 }
