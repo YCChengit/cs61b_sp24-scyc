@@ -71,6 +71,7 @@ public class Movement {
      */
     public boolean canMove(int deltaX, int deltaY) {
         Tetromino t = tetris.getCurrentTetromino();
+        TETile[][] board = tetris.getBoard();
 
         for (int tx = 0; tx < t.width; tx++){
             for (int ty = 0; ty < t.height; ty++){
@@ -85,7 +86,6 @@ public class Movement {
                     }
 
                     // Board check
-                    TETile[][] board = tetris.getBoard();
                     if (board[t.pos.x + tx + deltaX][t.pos.y + ty + deltaY] != Tileset.NOTHING) {
                         return false;
                     }
@@ -124,6 +124,7 @@ public class Movement {
      */
     public boolean canRotate(boolean[][] newShape) {
         Tetromino t = tetris.getCurrentTetromino();
+        TETile[][] board = tetris.getBoard();
         boolean valid = true;
         for (int tx = 0; tx < newShape.length; tx++) {
             for (int ty = 0; ty < newShape[0].length; ty++) {
@@ -131,7 +132,7 @@ public class Movement {
                     if (t.pos.x + tx < 0 || t.pos.y + ty < 0
                             || t.pos.x + tx >= tetris.getAuxiliary().length
                             || t.pos.y + ty >= tetris.getAuxiliary()[0].length
-                            || tetris.getAuxiliary()[t.pos.x + tx][t.pos.y + ty] != Tileset.NOTHING) {
+                            || board[t.pos.x + tx][t.pos.y + ty] != Tileset.NOTHING) {
                         valid = false;
                     }
                 }
