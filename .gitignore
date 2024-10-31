@@ -69,6 +69,10 @@ words_that_start_with_q.csv
 hyponyms1000-subgraph.txt
 synsets1000-subgraph.txt
 
+#Project 3
+proj3/src/*.txt
+
 # Please don't unless you know what you're doing
 *.iml
 **/.idea/**
+
